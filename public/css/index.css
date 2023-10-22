@@ -484,6 +484,10 @@ textarea {
 	height: 8rem;
 }
 
+form div:last-child {
+	grid-column-start: 1;
+}
+
 button[type="submit"] {
 	--color: var(--primary-inverse);
 	outline: 0;
@@ -552,4 +556,8 @@ header nav a,
 /* Utilities */
 .rotate-180 {
 	transform: rotate(180deg);
+}
+
+.hidden {
+	display: none;
 }
