@@ -1,0 +1,9 @@
+{% for menu in menus %}
+<div class="menu">
+	<a href="{{ menu.data.link }}">
+		{% image menu.url.slice(1,-1) + "/" + menu.data.image, menu.data.name + " menu image", "", [400], "100vw" %}
+
+		<h3>{{ menu.data.name }}</h3>
+	</a>
+</div>
+{% endfor %}

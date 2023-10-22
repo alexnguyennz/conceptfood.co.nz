@@ -1,0 +1,17 @@
+{% for member in members | reverse %}
+	<div class="member">
+		{% image member.url.slice(1,-1) + "/" + member.data.image, member.data.name, "", [192], "100vw" %}
+
+		<h3>{{ member.data.name }}</h3>
+
+		<p>{{ member.data.excerpt }}</p>
+
+		<div x-data="{ opened: false }">
+			<div x-show="opened" x-collapse x-cloak>{{ member.content | safe }}</div>
+
+			<button @click="opened = ! opened" aria-label="toggle team member content">
+				<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :class="opened && 'rotate-180'"><path stroke="none" d="M0 0h24v24H0z"/><path d="m6 9 6 6 6-6"/></svg>
+			</button>
+		</div>
+	</div>
+{% endfor %}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{% if title %}{{  title }} - {{ metadata.title }}{% elif metadata.title %}{{ metadata.title }}{% endif %}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+
+		<link
+			rel="preload"
+			href="/font/Roboto.woff2"
+			as="font"
+			type="font/woff2"
+			crossOrigin="anonymous"
+		/>
+		<link
+			rel="preload"
+			href="/font/Roboto-Medium.woff2"
+			as="font"
+			type="font/woff2"
+			crossOrigin="anonymous"
+		/>
+		<link
+			rel="preload"
+			href="/font/Roboto-Bold.woff2"
+			as="font"
+			type="font/woff2"
+			crossOrigin="anonymous"
+		/>
+
+		<link rel="preload" as="image" href="/img/logo_black.png">
+		<link rel="preload" as="image" href="/img/banner.jpg">
+
+		{% set css %}
+			{% include "public/css/pico.slim.min.css" %}
+			{% include "public/css/swiper-bundle.min.css" %}
+			{% include "public/css/index.css" %}
+		{% endset %}
+		<style>{{ css | cssmin | safe }}</style>
+
+		{%- js %}{% include "public/js/bootstrap-5.3.0.min.js" %}{% endjs %}
+		{%- js %}{% include "public/js/alpine-intersect-3.js" %}{% endjs %}
+		{%- js %}{% include "public/js/alpine-collapse-3.js" %}{% endjs %}
+		<script defer src="{% getBundleFileUrl "js" %}"></script>
+
+		<script defer src="/js/alpine-3.js"></script>
+
+
+	</head>
+	<body data-bs-spy="scroll" data-bs-target="#navigation" data-bs-threshold="[0.7]">
+		<div id="header-container">
+				<header id="menu" class="container">
+					<a href="/" aria-label="home page"><img src="/img/logo_black.png" alt="Concept Food" width="200" height="84" /></a>
+					<nav>
+						<ul id="navigation">
+							<li><a href="/#who-we-are">Who We Are</a></li>
+							<li><a href="/#menus">Menus</a></li>
+							<li><a href="/#team">The Team</a></li>
+							<li><a href="/#venues">Venues</a></li>
+							<li><a href="/#gallery">Gallery</a></li>
+							<li><a href="/#contact">Contact Us</a></li>
+						</ul>
+					</nav>
+				</header>
+
+				<header x-data="{ opened: false }" id="mobile-menu">
+					<div>
+						<button @click="opened = ! opened" aria-label="toggle mobile menu">
+							<img src="/img/icons/burger.svg" :src="opened ? '/img/icons/close.svg' : '/img/icons/burger.svg'" alt="mobile toggle status icon" width="24" height="24" />
+						</button>
+						<a href="/" aria-label="home page"><img src="/img/logo_black.png" alt="Concept Food" width="143" height="60" /></a>
+					</div>
+					<div x-cloak x-show="opened" @click.outside="opened = false" x-collapse class="nav-container">
+						<nav>
+							<ul @click="opened = false">
+								<li><a href="/#who-we-are">Who We Are</a></li>
+								<li><a href="/#menus">Menus</a></li>
+								<li><a href="/#team">The Team</a></li>
+								<li><a href="/#venues">Venues</a></li>
+								<li><a href="/#gallery">Gallery</a></li>
+								<li><a href="/#contact">Contact Us</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+		</div>
+
+		<main>
+			{{ content | safe }}
+		</main>
+
+		<div id="footer-container">
+			<footer class="container">
+
+				<div id="footer-content">
+					<div id="footer-info">
+						<a href="/" aria-label="home page"><img src="/img/logo.png" alt="Concept Food" width="200" height="84" /></a>
+						<div>
+						</div>
+					</div>
+
+					<div>
+						<p>Catering — Hospitality — Passion</p>
+
+						<p><a href="mailto:clint@conceptfood.co.nz" class="animated-link">clint@conceptfood.co.nz</a></p>
+
+						<p>Copyright © {% year %} <a href="/" class="animated-link">Concept Food</a></p>
+					</div>
+				</div>
+
+			</footer>
+		</div>
+
+		<script src="/js/swiper-bundle.min.js"></script>
+		<script defer>
+			const swiper = new Swiper('.swiper', {
+				loop: true,
+				scrollbar: {
+					el: ".swiper-scrollbar",
+					hide: true,
+				},
+				autoplay: {
+					delay: 5000,
+					disableOnInteraction: true,
+				},
+			});
+		</script>
+	</body>
+</html>

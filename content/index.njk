@@ -1,0 +1,127 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+<section id="who-we-are">
+	<div class="title-container">
+		<h2>Who We Are</h2>
+	</div>
+	<div class="container">
+		<div>
+			<h3>Catering — Hospitality — Passion</h3>
+			<p>Concept Food was founded out of a love of cuisine, our passion for service, and a drive to excel in the industry. We take great pleasure in being able to produce almost any delectable dish you can think of and deliver it with unmatched service. Every wedding and event that we cater for is exceptional and one-of-a-kind, not just for you but also for us.</p>
+
+			<p>Going the extra mile is the foundation of our reputation. The connections we make with our clients and the positive remarks and feedback we get drive us the most. Anything you can think of, let us assist you in making it a reality.</p>
+
+			<p>Concept Food is the catering division of <a href="https://yellowseat.co.nz" target="_blank" class="animated-link black-animated-link">Yellow Seat <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"></path>
+						<path d="M11 13l9 -9"></path>
+						<path d="M15 4h5v5"></path>
+					</svg></a>.</p>
+		</div>
+
+		<div>
+
+
+			<img src="/img/banner.jpg" alt="who we are banner" width="336" height="336" fetchpriority="high" loading="eager" />
+		</div>
+	</div>
+</section>
+
+<section id="menus">
+	<div class="container">
+
+		<div class="title-container">
+			<h2>Menus</h2>
+		</div>
+
+		<p>If exceptional food is what you desire, then prepare to have your taste buds tantalised!</p>
+		<p>These menus are merely a starting point to whet your appetite and we look forward to creating a fully bespoke menu that reflects your idea of culinary creativity.</p>
+
+		<p>Our team of talented chefs are happy to create a more tailored menu specific to your needs and to go with any theme of your event if desired.</p>
+
+		<div id="menus-list">
+			{% set menus = collections.menus %}
+			{% include "menuslist.njk" %}
+		</div>
+	</div>
+</section>
+
+<section id="team" class="coloured">
+	<div class="container">
+		<div class="title-container">
+			<h2>The Team</h2>
+		</div>
+		<div id="team-list">
+			{% set members = collections.members %}
+			{% include "memberslist.njk" %}
+		</div>
+	</div>
+</section>
+
+<section id="venues">
+	<div class="container">
+		<div class="title-container">
+			<h2>Venues</h2>
+		</div>
+		<div id="venues-list">
+			{% set venues = collections.venues %}
+			{% include "venueslist.njk" %}
+		</div>
+	</div>
+</section>
+
+<section id="gallery" class="coloured">
+	<div class="container">
+		<div class="title-container">
+			<h2>Gallery</h2>
+		</div>
+
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="/img/gallery/1.jpg"  alt="gallery image one" loading="lazy" /></div>
+				<div class="swiper-slide"><img src="/img/gallery/2.jpg"  alt="gallery image two" loading="lazy" /></div>
+				<div class="swiper-slide"><img src="/img/gallery/3.jpg"  alt="gallery image three" loading="lazy" /></div>
+			</div>
+			<div class="swiper-scrollbar"></div>
+		</div>
+	</div>
+</section>
+
+<section id="contact">
+	<div class="container">
+		<div class="title-container">
+			<h2>Contact Us</h2>
+		</div>
+
+		<form name="contact" method="POST" data-netlify="true">
+			<div>
+				<label for="first-name">First Name</label>
+				<input type="text" name="first-name" id="first-name" placeholder="First Name" required />
+			</div>
+
+			<div>
+				<label for="last-name">Last Name</label>
+				<input type="text" name="last-name" id="last-name" placeholder="Last Name" required />
+			</div>
+
+			<label for="email">Email Address</label>
+			<input type="email" name="email" id="email" placeholder="Email Address" required />
+
+			<label for="company">Company</label>
+			<input type="text" name="company" id="company" placeholder="Company" required />
+
+			<label for="message">Message</label>
+			<textarea name="message" id="message" placeholder="How can we help?" required></textarea>
+
+			<div>
+				<button type="submit">Send</button>
+			</div>
+		</form>
+	</div>
+</section>
+
