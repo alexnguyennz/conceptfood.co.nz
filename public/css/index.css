@@ -449,17 +449,6 @@ section h3 a:hover:before {
 	object-fit: cover;
 }
 
-.swiper-scrollbar {
-	background: white !important;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-	background: transparent;
-	border: none;
-	color: white !important;
-}
-
 /* Contact */
 form {
 	display: grid;
